@@ -9,7 +9,7 @@ class JatekterView {
     }
     #jatekterAlapallapot(lista) {
         //inicializálja a játékteret
-        let szuloElem = $("article"); //itt lesznek a kártyák
+        let szuloElem = $(".jatekter"); //itt lesznek a kártyák
         for (let index = 0; index < lista.length; index++) {
             //új elem létrehozása
             const elem = new JatekElem(lista[index], index, szuloElem); //Kártya osztály példányosítása

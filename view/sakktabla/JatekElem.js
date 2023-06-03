@@ -1,4 +1,4 @@
-import Elem from "./Elem.js";
+import Elem from "../Elem.js";
 class JatekElem extends Elem {
     #lepheto;
 
@@ -11,9 +11,7 @@ class JatekElem extends Elem {
             }
             if (this.#lepheto) {
                 this.#trigger("ideLepek", this.dataId);
-                console.log(this.#lepheto)
             }
-           
         });
 
         this.elem.on("mouseenter", () => {
@@ -28,9 +26,9 @@ class JatekElem extends Elem {
         //kiszínezi azokat a cellákat, ahova léphet a kiválasztott bábu.
 
         this.elem.css({
-            "background-color": "rgb(115, 226, 81)",
+            "background-color": "var(--zold)",
             cursor: "grab",
-            border: "0.5px solid lightgray",
+            border: "0.5pt solid var(--vilagosbarna)",
         });
     }
 
@@ -38,11 +36,11 @@ class JatekElem extends Elem {
         //this.#trigger("lehetsegeslepesek", this.dataId);
         if (!this.allapot) {
             this.elem.css({
-                "background-color": "rgb(198, 231, 188)",
+                "background-color": "var(--vilagoszold)",
                 cursor: "grab",
             });
         }
-       /*  if (this.#lepheto) {
+        /*  if (this.#lepheto) {
             this.elem.css({
                 "background-color": "rgb(115, 226, 81)",
                 cursor: "grab",

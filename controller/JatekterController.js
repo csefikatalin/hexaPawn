@@ -1,13 +1,18 @@
 import JatekterModel from "../model/JatekterModel.js";
-import JatekterView from "../view/JatekterView.js";
+import JatekterView from "../view/sakktabla/JatekterView.js";
+import InfoView from "../view/sakktabla/InfoView.js";
 class JatekterController {
     #kiKovetkezik;
 
     #jatekterView;
     #jatekterModel;
+    #infoView;
+    #babuLista=[]
     constructor() {
+        this.#babuLista=["♙","♟","♟"]
         this.#jatekterModel = new JatekterModel();
         this.#jatekterView = new JatekterView(this.#jatekterModel.lista);
+        this.#infoView = new InfoView($(".info"));
         this.#kiKovetkezik = -1;
         this.blocked = false;
         //JatekElem váltja ki az eseményt
@@ -29,13 +34,15 @@ class JatekterController {
         $(window).on("ideLepek", (event) => {
             //már van kiválasztott bábu, meghatározom, hoyg hova lépek vele.
             this.#jatekterModel.kivalasztottLepes(event.detail);
-            console.log(event.detail);
             this.#kiKovetkezik = this.#kiKovetkezik * -1;
             this.#jatekterView.aktAllapotMegjelenit(
                 this.#jatekterModel.lista,
                 this.#kiKovetkezik
             );
             this.blocked = false;
+            console.log(this.#babuLista,this.#kiKovetkezik+1)
+            this.#infoView.setKovJatekosElem(this.#babuLista[this.#kiKovetkezik+1])
+
         });
     }
     #lehetsegesLepesek(index) {

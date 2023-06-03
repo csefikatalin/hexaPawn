@@ -24,7 +24,7 @@ class Elem {
     szinBeallit() {
         if (this.dataId % 2 == 0) {
             this.elem.css({
-                "background-color": "gray",
+                "background-color": "var(--barna)",
                 "cursor": "pointer",
                 "border":"none"
             });
