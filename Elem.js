@@ -1,11 +1,13 @@
 class Elem {
+    #adat;
+   
     constructor(adat, dataId, szuloElem) {
-        this.adat = adat;
+        this.#adat = adat;
 
         this.dataId = dataId;
         szuloElem.append(`<div class="elem" id=${dataId}>${adat}</div>`);
         this.elem = $(".elem:last-child");
-        if (this.adat === "♙") {
+        if (this.#adat === "♙") {
             this.setAllapot(false);
         } else {
             this.setAllapot(true);
@@ -14,7 +16,7 @@ class Elem {
     }
     setErtek(adat) {
         this.elem.html(adat);
-        this.adat = adat;
+        this.#adat = adat;
     }
     setAllapot(ertek) {
         this.allapot = ertek; //true, ha kattinthato, false ha nem
@@ -22,8 +24,10 @@ class Elem {
     szinBeallit() {
         if (this.dataId % 2 == 0) {
             this.elem.css("background-color", "gray");
+            
         } else {
             this.elem.css("background-color", "white");
+          
         }
     }
 }

@@ -5,20 +5,35 @@ main {
 }
 article {
     margin: auto;
-   
-    width:150px;
+
+    width: 150px;
     border: 1px solid gray;
     display: grid;
     grid-template-columns: 50px 50px 50px;
     grid-template-rows: 50px 50px 50px;
-   
 }
 article div {
-    background: red;
-  
+    background: rgb(115, 226, 81);
 }
 .elem {
     text-align: center;
     font-size: 40px;
+    cursor: pointer;
+}
+
+.valaszthatomezo {
+    background-color: lightgray;
     cursor: grab;
+}
+.lephetomezo {
+    background-color: orange;
+    cursor: grab;
+}
+.szurke {
+    background-color: gray;
+  
+}
+.feher {
+    background-color: white;
+   
 }

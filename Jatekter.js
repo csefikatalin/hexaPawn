@@ -4,132 +4,107 @@ class Jatekter {
     #kivalasztottBabu;
     #kivalasztottBabuIndex;
     #kiKovetkezik;
-    #elemLista
+    #elemLista;
+    #lista = [];
     constructor() {
         this.#kivalasztottBabu = "";
         this.#kivalasztottBabuIndex = 0;
         this.#kiKovetkezik = -1; //-1 - fehér +1 fekete
-        this.lista = ["♟", "♟", "♟", "", "", "", "♙", "♙", "♙"];
+        this.#lista = ["♟", "♟", "♟", "", "", "", "♙", "♙", "♙"];
         this.#elemLista = [];
-        this.jatekter();
+        this.#jatekter(); //inicializálja a játékteret
         this.#valaszthatoMezokLista = [];
         //elkapjuk az elem kapcsolas eseményét
         $(window).on("lepes", (event) => {
-            this.#kivalasztottBabuIndex = event.detail.dataId;
-            this.#kivalasztottBabu = this.lista[this.#kivalasztottBabuIndex];
-            this.szabadhelyrelep(
+            //amikor kiválasztom a bábut, amivel lépni fogok
+            this.#kivalasztottBabuIndex = event.detail;
+            this.#kivalasztottBabu = this.#lista[this.#kivalasztottBabuIndex];
+            this.#szabadhelyrelep(
                 this.#kivalasztottBabu,
                 this.#kivalasztottBabuIndex
             );
+          
         });
         $(window).on("ideLepek", (event) => {
-            let kivElemIndex = event.detail.dataId;
-            let cserebabu = this.lista[kivElemIndex];
-            this.lista[kivElemIndex] = this.#kivalasztottBabu;
-            this.lista[this.#kivalasztottBabuIndex] = "";
-            console.log(this.lista);
-            this.#kiKovetkezik=this.#kiKovetkezik * -1;
-            this.aktAllapotMegjelenit();
+            //már van kiválasztott bábu, meghatározom, hoyg hova lépek vele.
+            let kivElemIndex = event.detail;
+            this.#lista[kivElemIndex] = this.#kivalasztottBabu;
+            this.#lista[this.#kivalasztottBabuIndex] = "";
+            this.#kiKovetkezik = this.#kiKovetkezik * -1;
+            this.#aktAllapotMegjelenit();
         });
     }
-    aktAllapotMegjelenit() {
-        this.lista.forEach((elem, index) => {
+    #aktAllapotMegjelenit() {
+        //megjeleníti a modell / játék aktuális állapotát a játéktéren
+        //előkészíti a következő állapothoz a játékteret
+        this.#lista.forEach((elem, index) => {
             this.#elemLista[index].setErtek(elem);
             this.#elemLista[index].setAllapot(true);
-            console.log(this.#kiKovetkezik, elem)
-            if (this.#kiKovetkezik === 1 && elem ==="♟" ) {
+            if (this.#kiKovetkezik === 1 && elem === "♟") {
                 this.#elemLista[index].setAllapot(false);
             }
-            if (this.#kiKovetkezik === -1 && elem ==="♙" ) {
+            if (this.#kiKovetkezik === -1 && elem === "♙") {
                 this.#elemLista[index].setAllapot(false);
             }
         });
-        //Az összes eddigi mezőről levesszük a léphetőcellaságot.
-        this.#valaszthatoMezokLista.forEach((lepesIndex) => {
-            this.kattintasTrigger("lephetoCellakLe", lepesIndex);
+       this.#lephetoseEltavolitasa()
+    }
+
+    #lephetoseEltavolitasa(){
+         //Az összes eddigi mezőről levesszük a léphetőcellaságot.
+         this.#valaszthatoMezokLista.forEach((lepesIndex) => {
+            this.#trigger("lephetoCellakLe", lepesIndex);
         });
     }
-    jatekter() {
+    #jatekter() {
         let szuloElem = $("article"); //itt lesznek a kártyák
-        for (let index = 0; index < this.lista.length; index++) {
+        for (let index = 0; index < this.#lista.length; index++) {
             //új elem létrehozása
-            const elem = new JatekElem(this.lista[index], index, szuloElem); //Kártya osztály példányosítása
+            const elem = new JatekElem(this.#lista[index], index, szuloElem); //Kártya osztály példányosítása
             this.#elemLista.push(elem);
         }
     }
-    szabadhelyrelep(aktErtek, index) {
-        let lepesIndex;
-        this.valaszthatomezok(index, aktErtek);
-        this.#valaszthatoMezokLista.forEach((lepesIndex) => {
-            this.kattintasTrigger("lephetoCellak", lepesIndex);
-        });
-    }
-    valaszthatomezok(index, babu) {
-        //Az összes eddigi mezőről levesszük a léphetőcellaságot.
-        this.#valaszthatoMezokLista.forEach((lepesIndex) => {
-            this.kattintasTrigger("lephetoCellakLe", lepesIndex);
-        });
+    #szabadhelyrelep(aktErtek, index) {
+        this.#lephetoseEltavolitasa()
+        //beállítja azokat a mezőket, melyekre az adott indexű mezőről az adott bábu léphet
+        //a léphető mezőket beteszi a this.#valaszthatoSzeleMezo listába
         this.#valaszthatoMezokLista = [];
-        let irany = 1;
-        if (babu === "♙") {
-            irany = -1;
-        }
-        let lehetsegesLepesElore = index + irany * 3;
-        if (this.lista[lehetsegesLepesElore] === "") {
+        let lehetsegesLepesElore = index + this.#kiKovetkezik * 3;
+        if (this.#lista[lehetsegesLepesElore] === "") {
             this.#valaszthatoMezokLista.push(lehetsegesLepesElore);
         }
         //Fehér bábuval feketét ütünk
-
-        if (index % 3 !== 2) {
-            //jobbra
-            let lehetsegesLepesUtes = lehetsegesLepesElore + 1;
-            if (
-                this.lista[lehetsegesLepesUtes] === "♟" &&
-                this.lista[index] === "♙"
-            ) {
-                this.#valaszthatoMezokLista.push(lehetsegesLepesUtes);
-            }
-        }
-        if (index % 3 !== 0) {
-            //balra
-            let lehetsegesLepesUtes = lehetsegesLepesElore - 1;
-            if (
-                this.lista[lehetsegesLepesUtes] === "♟" &&
-                this.lista[index] === "♙"
-            ) {
-                this.#valaszthatoMezokLista.push(lehetsegesLepesUtes);
-            }
-        }
+        this.#valaszthatoSzeleMezo(index, 2, "♟", "♙", 1); //jobbra
+        this.#valaszthatoSzeleMezo(index, 0, "♟", "♙", -1); //balra
         //Fekete bábuval fehéret ütünk
-
-        if (index % 3 !== 2) {
-            //jobbra
-            let lehetsegesLepesUtes = lehetsegesLepesElore + 1;
-            if (
-                this.lista[index] === "♟" &&
-                this.lista[lehetsegesLepesUtes] === "♙"
-            ) {
-                this.#valaszthatoMezokLista.push(lehetsegesLepesUtes);
-            }
-        }
-        if (index % 3 !== 0) {
-            //balra
-            let lehetsegesLepesUtes = lehetsegesLepesElore - 1;
-            if (
-                this.lista[index] === "♟" &&
-                this.lista[lehetsegesLepesUtes] === "♙"
-            ) {
-                this.#valaszthatoMezokLista.push(lehetsegesLepesUtes);
-            }
-        }
+        this.#valaszthatoSzeleMezo(index, 2, "♙", "♟", +1); //jobbra
+        this.#valaszthatoSzeleMezo(index, 0, "♙", "♟", -1); //balra
         console.log(this.#valaszthatoMezokLista);
+
+        this.#valaszthatoMezokLista.forEach((lepesIndex) => {
+            this.#trigger("lephetoCellak", lepesIndex);
+        });
     }
 
-    kattintasTrigger(esemenyNev, i) {
-        let esemeny = new CustomEvent(esemenyNev, {
-            detail: i, //ezzel adok át adatokat
-        });
-        window.dispatchEvent(esemeny); //a főablakhoz adom az eseményt, ezt tudom majd a script.js-ben elkapni.
+    #valaszthatoSzeleMezo(index, szel, egyikBabu, masikBabu, irany) {
+        //megvizsgálja, hogy ha a lépő bábu a tábla szélén áll, akkor mely mezőkre léphet/üthet
+        let lehetsegesLepesElore = index + this.#kiKovetkezik * 3;
+        if (index % 3 !== szel) {
+            //jobbra
+            let lehetsegesLepesUtes = lehetsegesLepesElore + irany;
+            if (
+                this.#lista[lehetsegesLepesUtes] === egyikBabu &&
+                this.#lista[index] === masikBabu
+            ) {
+                this.#valaszthatoMezokLista.push(lehetsegesLepesUtes);
+            }
+        }
+    }
+
+    #trigger(esemenyNev, i) {
+        //az i mondja meg,hogy melyik elem esetében kell aktiválni az eseményt
+        let esemeny = new CustomEvent(esemenyNev, { detail: i });
+        window.dispatchEvent(esemeny);
     }
 }
 export default Jatekter;
