@@ -4,29 +4,39 @@ class JatekterModel {
     #kivalasztottBabu;
     #kivalasztottBabuIndex;
     #lista = [];
+    #babuLista;
+   
+   
     constructor() {
+        this.#babuLista = ["♙", "♟", "♟", "♙"];
         this.#kiKovetkezik = -1; //-1 - fehér +1 fekete
         this.#jatekter(); //inicializálja a játékteret
         this.#valaszthatoMezokLista = [];
         this.#kivalasztottBabu = "";
         this.#kivalasztottBabuIndex = 0;
+        this.jatekVege=false;
+        this.gyoztesBabu=""
     }
     #jatekter() {
-        this.#lista = ["♟", "♟", "♟", "", "", "", "♙", "♙", "♙"];
+        this.#lista = ["♟", "♟", "♟", " ", " ", " ", "♙", "♙", "♙"];
     }
     babuValasztas(index) {
         //amikor kiválasztom a bábut, amivel lépni fogok
-     
+
         this.#kivalasztottBabu = this.#lista[index];
         this.#kivalasztottBabuIndex = index;
-        this.#szabadhelyrelep();
+        this.#szabadhelyrelep(this.#kivalasztottBabuIndex);
     }
     kivalasztottLepes(index) {
-      
         this.#lista[index] = this.#kivalasztottBabu;
-        this.#lista[this.#kivalasztottBabuIndex] = "";
-        this.#kiKovetkezik = this.#kiKovetkezik * - 1;
-
+        this.#lista[this.#kivalasztottBabuIndex] = " ";
+        this.#kiKovetkezik = this.#kiKovetkezik * -1;
+        this.gyoztesBabu=this.gyoztes()
+        console.log("Nyertes", this.gyoztesBabu);
+        if (this.gyoztesBabu!==undefined ){
+            this.jatekVege=true
+            console.log(this.jatekVege)
+        }
     }
     get lista() {
         return this.#lista;
@@ -34,24 +44,48 @@ class JatekterModel {
     get valaszthatoMezokLista() {
         return this.#valaszthatoMezokLista;
     }
-    #szabadhelyrelep() {
-       
+    // this.#kivalasztottBabuIndex
+    #szabadhelyrelep(index) {
         //beállítja azokat a mezőket, melyekre az adott indexű mezőről az adott bábu léphet
         //a léphető mezőket beteszi a this.#valaszthatoSzeleMezo listába
         this.#valaszthatoMezokLista = [];
-        let lehetsegesLepesElore =  this.#kivalasztottBabuIndex + this.#kiKovetkezik * 3;
-        if (this.#lista[lehetsegesLepesElore] === "") {
+        let lehetsegesLepesElore = index + this.#kiKovetkezik * 3;
+        if (this.#lista[lehetsegesLepesElore] === " ") {
             this.#valaszthatoMezokLista.push(lehetsegesLepesElore);
         }
         //Fehér bábuval feketét ütünk
-        this.#valaszthatoSzeleMezo( this.#kivalasztottBabuIndex, 2, "♟", "♙", 1); //jobbra
-        this.#valaszthatoSzeleMezo( this.#kivalasztottBabuIndex, 0, "♟", "♙", -1); //balra
+        this.#valaszthatoSzeleMezo(index, 2, "♟", "♙", 1); //jobbra
+        this.#valaszthatoSzeleMezo(index, 0, "♟", "♙", -1); //balra
         //Fekete bábuval fehéret ütünk
-        this.#valaszthatoSzeleMezo( this.#kivalasztottBabuIndex, 2, "♙", "♟", +1); //jobbra
-        this.#valaszthatoSzeleMezo( this.#kivalasztottBabuIndex, 0, "♙", "♟", -1); //balra
-     
+        this.#valaszthatoSzeleMezo(index, 2, "♙", "♟", +1); //jobbra
+        this.#valaszthatoSzeleMezo(index, 0, "♙", "♟", -1); //balra
     }
 
+    gyoztes() {
+        let feherGyoztes = this.#lista.join(".").slice(0, 5);
+        if (feherGyoztes.includes("♙")) {
+            return "♙";
+        }
+        let feketeGyoztes = this.#lista.join(".").slice(12, 17);
+
+        if (feketeGyoztes.includes("♟")) {
+            return "♟";
+        }
+        let aktBabu = this.#babuLista[this.#kiKovetkezik + 1];
+        console.log(aktBabu);
+        let db = 0;
+        this.#lista.forEach((element, index) => {
+            if (element == aktBabu) {
+                this.#szabadhelyrelep(index);
+                db += this.#valaszthatoMezokLista.length;
+            }
+        });
+        console.log("lehetséges lépések száma ", db);
+        if (db === 0) {
+            console.log("nyert ", this.#babuLista[this.#kiKovetkezik + 2]);
+            return this.#babuLista[this.#kiKovetkezik + 2];
+        }
+    }
     #valaszthatoSzeleMezo(index, szel, egyikBabu, masikBabu, irany) {
         //megvizsgálja, hogy ha a lépő bábu a tábla szélén áll, akkor mely mezőkre léphet/üthet
         let lehetsegesLepesElore = index + this.#kiKovetkezik * 3;

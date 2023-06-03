@@ -7,9 +7,9 @@ class JatekterController {
     #jatekterView;
     #jatekterModel;
     #infoView;
-    #babuLista=[]
+    #babuLista = [];
     constructor() {
-        this.#babuLista=["♙","♟","♟"]
+        this.#babuLista = ["♙", "♟", "♟"];
         this.#jatekterModel = new JatekterModel();
         this.#jatekterView = new JatekterView(this.#jatekterModel.lista);
         this.#infoView = new InfoView($(".info"));
@@ -20,12 +20,12 @@ class JatekterController {
             //this.#lephetosegEltavolitasa();
             //amikor kiválasztom a bábut, amivel lépni fogok
             this.#lehetsegesLepesek(event.detail, "lepes");
-            console.log(event.detail);
+           
             this.blocked = true;
+         
         });
         $(window).on("lehetsegeslepesek", (event) => {
             //amikor a lehetséges a bábuk fölé s viszem az egeret, amivel lépni fogok
-           console.log(this.blocked)
             if (this.blocked) {
                 this.#lehetsegesLepesek(event.detail, "lehetsegeslepes");
                 console.log(event.detail);
@@ -40,13 +40,22 @@ class JatekterController {
                 this.#kiKovetkezik
             );
             this.blocked = false;
-            console.log(this.#babuLista,this.#kiKovetkezik+1)
-            this.#infoView.setKovJatekosElem(this.#babuLista[this.#kiKovetkezik+1])
-
+          
+            this.#infoView.setKovJatekosElem(
+                `A következő játékos: ${this.#babuLista[this.#kiKovetkezik + 1]}`
+            );
+            this.#jatekvege();
         });
     }
+    #jatekvege() {
+        console.log(this.#jatekterModel.jatekVege)
+        if (this.#jatekterModel.jatekVege) {
+           
+            this.#infoView.setKovJatekosElem(`Vége! A nyertes: ${this.#jatekterModel.gyoztesBabu}`)
+        }
+    }
     #lehetsegesLepesek(index) {
-        console.log();
+       
         this.#jatekterModel.babuValasztas(index);
         this.#jatekterView.lephetoHelyekMegjelenit(
             this.#jatekterModel.valaszthatoMezokLista
