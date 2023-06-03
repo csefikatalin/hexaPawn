@@ -16,6 +16,7 @@ class JatekterView {
             this.#elemLista.push(elem);
         }
     }
+ 
     aktAllapotMegjelenit(lista, kikovetkezik) {
         //megjeleníti a modell / játék aktuális állapotát a játéktéren
         //előkészíti a következő állapothoz a játékteret
@@ -41,6 +42,7 @@ class JatekterView {
     }
 
     lephetoHelyekMegjelenit(lista) {
+        //a Modelltől a valaszthatoMezokLista-t kapja meg 
         this.#lephetosegEltavolitasa();
 
         lista.forEach((lepesIndex) => {

@@ -11,7 +11,9 @@ class JatekElem extends Elem {
             }
             if (this.#lepheto) {
                 this.#trigger("ideLepek", this.dataId);
+                console.log(this.#lepheto)
             }
+           
         });
 
         this.elem.on("mouseenter", () => {
@@ -33,18 +35,19 @@ class JatekElem extends Elem {
     }
 
     #mouseEnter() {
+        //this.#trigger("lehetsegeslepesek", this.dataId);
         if (!this.allapot) {
             this.elem.css({
                 "background-color": "rgb(198, 231, 188)",
                 cursor: "grab",
             });
         }
-        if (this.#lepheto) {
+       /*  if (this.#lepheto) {
             this.elem.css({
                 "background-color": "rgb(115, 226, 81)",
                 cursor: "grab",
             });
-        }
+        } */
     }
     #mouseLeave() {
         this.szinBeallit();
