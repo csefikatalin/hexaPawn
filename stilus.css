@@ -1,0 +1,24 @@
+main {
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+article {
+    margin: auto;
+   
+    width:150px;
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px;
+   
+}
+article div {
+    background: red;
+  
+}
+.elem {
+    text-align: center;
+    font-size: 40px;
+    cursor: grab;
+}
