@@ -1,6 +1,6 @@
-import Jatekter from "./Jatekter.js";
+import JatekterController from "./controller/JatekterController.js";
 
 $(function () {
-   new Jatekter()
-   //console.log = function() {}; kikapcsolja a console.log-ot 
+    new JatekterController();
+    //console.log = function() {}; kikapcsolja a console.log-ot
 });

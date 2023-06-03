@@ -21,17 +21,6 @@ class JatekElem extends Elem {
         this.elem.on("mouseleave", () => {
             this.#mouseLeave();
         });
-
-        $(window).on("lephetoCellak", (event) => {
-            if (this.dataId === event.detail) {
-                this.setLepheto(true);
-            }
-        });
-        $(window).on("lephetoCellakLe", (event) => {
-            if (this.dataId === event.detail) {
-                this.setLepheto(false);
-            }
-        });
     }
     #setLephetoCellaMutat(ertek) {
         //kiszínezi azokat a cellákat, ahova léphet a kiválasztott bábu.
