@@ -16,6 +16,7 @@ class Jatekter {
         this.#valaszthatoMezokLista = [];
         //elkapjuk az elem kapcsolas eseményét
         $(window).on("lepes", (event) => {
+            this.#lephetosegEltavolitasa()
             //amikor kiválasztom a bábut, amivel lépni fogok
             this.#kivalasztottBabuIndex = event.detail;
             this.#kivalasztottBabu = this.#lista[this.#kivalasztottBabuIndex];
@@ -47,13 +48,14 @@ class Jatekter {
                 this.#elemLista[index].setAllapot(false);
             }
         });
-       this.#lephetoseEltavolitasa()
+       this.#lephetosegEltavolitasa()
     }
 
-    #lephetoseEltavolitasa(){
+    #lephetosegEltavolitasa(){
          //Az összes eddigi mezőről levesszük a léphetőcellaságot.
          this.#valaszthatoMezokLista.forEach((lepesIndex) => {
-            this.#trigger("lephetoCellakLe", lepesIndex);
+           // this.#trigger("lephetoCellakLe", lepesIndex);
+           this.#elemLista[lepesIndex].setLepheto(false);
         });
     }
     #jatekter() {
@@ -65,7 +67,7 @@ class Jatekter {
         }
     }
     #szabadhelyrelep(aktErtek, index) {
-        this.#lephetoseEltavolitasa()
+        this.#lephetosegEltavolitasa()
         //beállítja azokat a mezőket, melyekre az adott indexű mezőről az adott bábu léphet
         //a léphető mezőket beteszi a this.#valaszthatoSzeleMezo listába
         this.#valaszthatoMezokLista = [];
@@ -82,7 +84,9 @@ class Jatekter {
         console.log(this.#valaszthatoMezokLista);
 
         this.#valaszthatoMezokLista.forEach((lepesIndex) => {
-            this.#trigger("lephetoCellak", lepesIndex);
+            //this.#trigger("lephetoCellak", lepesIndex);
+           
+            this.#elemLista[lepesIndex].setLepheto(true);
         });
     }
 

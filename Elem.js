@@ -23,10 +23,18 @@ class Elem {
     }
     szinBeallit() {
         if (this.dataId % 2 == 0) {
-            this.elem.css("background-color", "gray");
+            this.elem.css({
+                "background-color": "gray",
+                "cursor": "pointer",
+                "border":"none"
+            });
             
         } else {
-            this.elem.css("background-color", "white");
+            this.elem.css({
+                "background-color": "white",
+                "cursor": "pointer",
+                "border":"none"
+            });
           
         }
     }

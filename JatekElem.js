@@ -1,7 +1,6 @@
 import Elem from "./Elem.js";
 class JatekElem extends Elem {
     #lepheto;
-   
 
     constructor(adat, dataId, szuloElem) {
         super(adat, dataId, szuloElem);
@@ -14,23 +13,15 @@ class JatekElem extends Elem {
                 this.#trigger("ideLepek", this.dataId);
             }
         });
+
         this.elem.on("mouseenter", () => {
-            if (!this.allapot) {
-                this.elem.css({
-                    "background-color": "rgb(198, 231, 188)",
-                    cursor: "grab",
-                });
-            }
-            if (this.#lepheto) {
-                this.elem.css({
-                    "background-color": "rgb(115, 226, 81)",
-                    cursor: "grab",
-                });
-            }
+            this.#mouseEnter();
         });
-        this.elem.on("mouseleave", () => {           
-            this.szinBeallit();
+
+        this.elem.on("mouseleave", () => {
+            this.#mouseLeave();
         });
+
         $(window).on("lephetoCellak", (event) => {
             if (this.dataId === event.detail) {
                 this.setLepheto(true);
@@ -42,9 +33,41 @@ class JatekElem extends Elem {
             }
         });
     }
+    #setLephetoCellaMutat(ertek) {
+        //kiszínezi azokat a cellákat, ahova léphet a kiválasztott bábu.
+
+        this.elem.css({
+            "background-color": "rgb(115, 226, 81)",
+            cursor: "grab",
+            border: "0.5px solid lightgray",
+        });
+    }
+
+    #mouseEnter() {
+        if (!this.allapot) {
+            this.elem.css({
+                "background-color": "rgb(198, 231, 188)",
+                cursor: "grab",
+            });
+        }
+        if (this.#lepheto) {
+            this.elem.css({
+                "background-color": "rgb(115, 226, 81)",
+                cursor: "grab",
+            });
+        }
+    }
+    #mouseLeave() {
+        this.szinBeallit();
+    }
     setLepheto(ertek) {
         //az adott bábu tud-e lépni erre a cellára.
         this.#lepheto = ertek;
+        if (this.#lepheto) {
+            this.#setLephetoCellaMutat();
+        } else {
+            this.szinBeallit();
+        }
     }
     //létrehozunk egy saját eseményt, ami akkor fog kiváltódni, ha a cellára kattintunk
     //ez azért kell, hogy a főprogram tudja, hogy melyik bábuval akarunk lépni
