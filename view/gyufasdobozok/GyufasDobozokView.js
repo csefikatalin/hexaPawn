@@ -1,19 +1,26 @@
 import GyufasDobozView from "./GyufasDobozView.js";
 class GyufasDobozokView {
     #lista = [];
-    constructor(lista) {
+    #okosLista = [];
+    constructor(lista, okosLista) {
         this.#lista = lista;
-        this.#init();
+        this.#okosLista = okosLista;
+        this.#init(".gyufasdobozok", this.#lista);
+        console.log(this.#okosLista)
+        if (this.#okosLista !== null) {
+            this.#init(".okosdobozok", this.#okosLista);
+        }
     }
-    #init() {
-        let szuloElem = $(`.gyufasdobozok .lepes2`);
+    #init(szulo, lista) {
+        // gyufásdobozok megjelenítése
+        let szuloElem = $(`${szulo} .lepes2`);
         szuloElem.empty();
-        szuloElem = $(`.gyufasdobozok .lepes4`);
+        szuloElem = $(`${szulo} .lepes4`);
         szuloElem.empty();
-        szuloElem = $(`.gyufasdobozok .lepes6`);
+        szuloElem = $(`${szulo} .lepes6`);
         szuloElem.empty();
-        this.#lista.forEach((element, index) => {
-            new GyufasDobozView(element, index);
+        lista.forEach((element, index) => {
+            new GyufasDobozView(element, index, $(`${szulo}`));
         });
     }
 }

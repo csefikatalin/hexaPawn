@@ -80,28 +80,41 @@ article .elem {
     cursor: pointer;
     aspect-ratio: 1;
 }
-
-/** gyufásdobozok elrendezése és formázása*/
-section {
+/*a két stratégia egymás mellett*/
+.tarolo {
     background: rgb(23, 22, 22);
     color: beige;
 }
-section h2 {
-    height: 5vh;
+/** gyufásdobozok elrendezése és formázása*/
+.cim {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
-.gyufasdobozok {
+section h3 {
+    padding: 30px 0 0 0;
+    border-top: 1pt solid var(--sotetbarna);
+}
+.strategiak {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow-y: auto;
     height: calc(90vh - 15px);
 }
-footer{
-    height: 15px;
-text-align:center;
-color:var(--fekete);
-font-weight:bold;
+.gyufasdobozok {
+    border-right: 2px solid var(--barna);
 }
-footer p{
-    padding:2pt;
-    margin:0;
+.okosdobozok {
+    border-left: 2px solid var(--barna);
+}
+footer {
+    height: 15px;
+    text-align: center;
+    color: var(--fekete);
+    font-weight: bold;
+}
+footer p {
+    padding: 2pt;
+    margin: 0;
 }
 .lepes2,
 .lepes4,
@@ -215,6 +228,24 @@ footer p{
 @media screen and (max-width: 700px) {
     .doboz .elem {
         font-size: 25px;
+    }
+    /*a két stratégia eltűnik, csak egy lesz*/
+
+    /** gyufásdobozok elrendezése és formázása*/
+    .cim {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .cim h2:last-child {
+        display: none;
+    }
+
+    .strategiak {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    .cim section:last-child {
+        display: none;
     }
 }
 @media screen and (max-width: 500px) {

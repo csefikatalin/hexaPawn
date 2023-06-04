@@ -1,14 +1,16 @@
 import { gyufasDobozLista } from "./gyufasdobozlista.js";
+import { okosDobozok } from "./gyufasdobozlista.js";
 class GyufasDobozModell {
     #lepesLista = [];
     #gyufasdDobozLista = []; //itt tárolomm a gyufásdobozokat, amik az adott állapothoz tartozó lehetséges lépéseket tárolják
     #okosGyDobozLista = []; // itt tárolom a már felokosított dobozokat
     constructor() {
         this.#gyufasdDobozLista = gyufasDobozLista;
-        let okosDobozokKesz=localStorage.getItem("okosDobozokKesz")
-        if ( okosDobozokKesz!== undefined) {
-            this.#okosGyDobozLista = JSON.parse(okosDobozokKesz );
-        }
+       /*  let okosDobozok=localStorage.getItem("okosDobozok")
+        if ( okosDobozok!== undefined) {
+            this.#okosGyDobozLista = JSON.parse(okosDobozok );
+        } */
+        this.#okosGyDobozLista=okosDobozok;
         console.log( this.#okosGyDobozLista)
     }
     get gyufasdDobozLista() {

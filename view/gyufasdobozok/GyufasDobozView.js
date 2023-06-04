@@ -5,11 +5,11 @@ class GyufasDobozView {
     #adat = [];
     #lepesekLista = [];
     #szinLista = ["red", "orange", "blue", "purple"];
-    constructor(adat,index) {
+    constructor(adat, index, szuloElem) {
         this.#allapotLista = adat.jatekter;
-      this.index=index
-        this.szuloElem = $(`.gyufasdobozok .lepes${adat.lepesszam}`);
-       
+        this.index = index;
+        this.szuloElem = szuloElem.children(`.lepes${adat.lepesszam}`);
+
         this.#adat = adat;
         this.#lepesekLista = adat.lepesek;
         this.#init();
@@ -18,7 +18,7 @@ class GyufasDobozView {
     #init() {
         this.szuloElem.append(
             `<div class='tabla'>
-            <h5>${this.index}</h5>
+            <h5>${this.index+1}</h5>
             <div class='doboz'></div><div class='nyilak'></div>
             </div>`
         );
@@ -45,7 +45,7 @@ class GyufasDobozView {
         this.#lepesekLista.forEach((element, index) => {
             let sor = Math.floor(element[0] / 3);
             let oszlop = element[0] % 3;
-            let top = szelesseg * sor+65;
+            let top = szelesseg * sor + 65;
             let left = szelesseg * oszlop + szelesseg / 2 + 5;
             let kulonbseg = element[1] - element[0] - 3;
 

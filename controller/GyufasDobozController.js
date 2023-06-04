@@ -5,7 +5,7 @@ class GyufasDobozController {
     #gyufasDobozokView;
     constructor() {
         this.#gyufasdDobozModel = new GyufasDobozModell();
-        this.#gyufasDobozokView = new GyufasDobozokView(this.#gyufasdDobozModel.gyufasdDobozLista);
+        this.#gyufasDobozokView = new GyufasDobozokView(this.#gyufasdDobozModel.gyufasdDobozLista,this.#gyufasdDobozModel.okosGyDobozLista);
     }
     
 }
