@@ -1,6 +1,6 @@
 import JatekterModel from "../model/JatekterModel.js";
 import JatekterView from "../view/sakktabla/JatekterView.js";
-import InfoView from "../view/sakktabla/InfoView.js";
+import InfoView from "../view/info/InfoView.js";
 class JatekterController {
     #kiKovetkezik;
     #jatekSzama
@@ -29,7 +29,7 @@ class JatekterController {
             //amikor a lehetséges a bábuk fölé s viszem az egeret, amivel lépni fogok
             if (this.blocked) {
                 this.#lehetsegesLepesek(event.detail, "lehetsegeslepes");
-                console.log(event.detail);
+            
             }
         });
         $(window).on("ideLepek", (event) => {
@@ -52,7 +52,10 @@ class JatekterController {
         if (this.#jatekterModel.jatekVege) {           
             this.#infoView.setKovJatekosElem(`Vége! A nyertes: ${this.#jatekterModel.gyoztesBabu}`)
             this.#infoView.ujjatekElem.show()
-        
+            this.#jatekterView.aktAllapotMegjelenit(
+                this.#jatekterModel.lista,
+                "Vége"
+            );
             this.#trigger("jatekVege",this.#jatekterModel.gyoztesBabu)
         }
        

@@ -1,6 +1,6 @@
 import JatekterController from "./JatekterController.js";
 import GyufasDobozController from "./GyufasDobozController.js";
-import InfoJatekView from "../view/sakktabla/InfoJatekView.js";
+import InfoJatekView from "../view/info/InfoJatekView.js";
 import JatekModell from "../model/JatekModell.js";
 class JatekController {
     constructor() {
