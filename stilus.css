@@ -2,11 +2,15 @@
 :root {
     --szel: 120px;
     --barna: #645345;
-    --sotetbarna: #3c3229;
+    --sotetbarna: #1a1613;
     --vilagosbarna: rgb(130, 113, 113);
     --vilagoszold: rgb(83, 225, 83);
     --zold: rgb(49, 170, 49);
     --voros: rgb(159, 23, 23);
+    --feketeSzam:50%;
+    --feherSzam:50%;
+    --fekete:  #3c3229;
+    --feher: whitesmoke;
 }
 *{
     box-sizing: border-box;
@@ -88,7 +92,7 @@ section {
     gap: 0;
     aspect-ratio: 1;
 }
-.doboz .elem {
+.doboz .delem {
     max-width: var(--szel);
     display: flex;
     justify-content: center;
@@ -99,10 +103,16 @@ section {
 
     aspect-ratio: 1;
 }
+.doboz .delem:nth-child(odd){
+    background-color: var(--barna)
+}
+.doboz .delem:nth-child(even){
+    background-color: whitesmoke
+}
 /**infopanel*/
 .info{
     background-color: white;
-    opacity: 0.5;
+    opacity: 0.7;
     padding:10px;
     margin:10px auto;
     font-size: 16pt;
@@ -125,6 +135,24 @@ section {
     color:white;
     padding:5pt 10pt;
     font-size:12pt;
+}
+.gyozelmekallasa{
+    display:grid;
+    grid-template-columns: var(--feketeSzam) var(--feherSzam);
+   
+    grid-template-rows: 20pt;
+    
+}
+.gyozelmekallasa span:first-of-type{
+    background-color:var(--fekete);
+    border-radius:5px 0 0 5px;
+    border:0.1px solid var(--barna)
+}
+.gyozelmekallasa span:last-of-type{
+    background-color:var(--feher);
+    border-radius: 0 5px 5px 0 ;
+    border:0.1px solid var(--barna)
+   
 }
 
 /**nyilak*/

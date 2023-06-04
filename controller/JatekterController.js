@@ -3,16 +3,17 @@ import JatekterView from "../view/sakktabla/JatekterView.js";
 import InfoView from "../view/sakktabla/InfoView.js";
 class JatekterController {
     #kiKovetkezik;
-
+    #jatekSzama
     #jatekterView;
     #jatekterModel;
     #infoView;
     #babuLista = [];
-    constructor() {
+    constructor(  jatekSzama) {
+        this.#jatekSzama=jatekSzama
         this.#babuLista = ["♙", "♟", "♟"];
         this.#jatekterModel = new JatekterModel();
         this.#jatekterView = new JatekterView(this.#jatekterModel.lista);
-        this.#infoView = new InfoView($(".info"));
+        this.#infoView = new InfoView($(".info1"));
         this.#kiKovetkezik = -1;
         this.blocked = false;
         //JatekElem váltja ki az eseményt
@@ -47,12 +48,14 @@ class JatekterController {
             this.#jatekvege();
         });
     }
-    #jatekvege() {
-        console.log(this.#jatekterModel.jatekVege)
-        if (this.#jatekterModel.jatekVege) {
-           
+    #jatekvege() {       
+        if (this.#jatekterModel.jatekVege) {           
             this.#infoView.setKovJatekosElem(`Vége! A nyertes: ${this.#jatekterModel.gyoztesBabu}`)
+            this.#infoView.ujjatekElem.show()
+        
+            this.#trigger("jatekVege",this.#jatekterModel.gyoztesBabu)
         }
+       
     }
     #lehetsegesLepesek(index) {
        
@@ -60,6 +63,13 @@ class JatekterController {
         this.#jatekterView.lephetoHelyekMegjelenit(
             this.#jatekterModel.valaszthatoMezokLista
         );
+    }
+    #trigger(esemenyNev, adat) {
+       
+        let esemeny = new CustomEvent(esemenyNev, {
+            detail: adat, //ezzel adok át adatokat
+        });
+        window.dispatchEvent(esemeny); //a főablakhoz adom az eseményt, ezt tudom majd a script.js-ben elkapni.
     }
 }
 export default JatekterController;

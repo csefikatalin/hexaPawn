@@ -32,10 +32,10 @@ class JatekterModel {
         this.#lista[this.#kivalasztottBabuIndex] = " ";
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
         this.gyoztesBabu=this.gyoztes()
-        console.log("Nyertes", this.gyoztesBabu);
+    
         if (this.gyoztesBabu!==undefined ){
             this.jatekVege=true
-            console.log(this.jatekVege)
+         
         }
     }
     get lista() {
@@ -72,7 +72,7 @@ class JatekterModel {
             return "♟";
         }
         let aktBabu = this.#babuLista[this.#kiKovetkezik + 1];
-        console.log(aktBabu);
+      
         let db = 0;
         this.#lista.forEach((element, index) => {
             if (element == aktBabu) {
@@ -80,7 +80,7 @@ class JatekterModel {
                 db += this.#valaszthatoMezokLista.length;
             }
         });
-        console.log("lehetséges lépések száma ", db);
+       
         if (db === 0) {
             console.log("nyert ", this.#babuLista[this.#kiKovetkezik + 2]);
             return this.#babuLista[this.#kiKovetkezik + 2];
