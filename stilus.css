@@ -1,35 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Alkatra&family=Montserrat:wght@200&family=Roboto:wght@100;300&display=swap");
 :root {
-    --szel: 100px;
-    --barna: rgb(82, 69, 69);
-    --vilagosbarna: rgb(149, 128, 128);
+    --szel: 120px;
+    --barna: #645345;
+    --sotetbarna: #3c3229;
+    --vilagosbarna: rgb(130, 113, 113);
     --vilagoszold: rgb(83, 225, 83);
     --zold: rgb(49, 170, 49);
+    --voros: rgb(159, 23, 23);
+}
+*{
+    box-sizing: border-box;
 }
 body {
-    background-color: antiquewhite;
+    background: antiquewhite
+        url("https://cdn.create.vista.com/api/media/small/326318274/stock-photo-top-view-brown-wooden-surface");
+    background: antiquewhite
+        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvqUxTTpPg1ElCICPEjhzShStDBzr81ev7ZMwyDksmMhbT3sirQGCwEYQ9BtO5e4QM6_0&usqp=CAU");
+    background: antiquewhite
+        url("https://img.freepik.com/free-photo/wooden-wood-backgrounds-textured-pattern-wallpaper-concept_53876-14103.jpg");
+    background: antiquewhite
+        url("https://st2.depositphotos.com/2547911/6822/i/450/depositphotos_68224243-stock-photo-texture-wooden-texture-wood-grain.jpg");
+    background: antiquewhite url("kepek/hatter3.jpg");
+
     margin: 0;
-    box-sizing: border-box;
+   
     font-family: Montserrat, Tahoma, Geneva, Verdana, sans-serif;
 }
 main {
     width: 100%;
     text-align: center;
-    margin: auto;
+  
     display: grid;
     grid-template-columns: calc(3 * var(--szel) + 100px) auto;
 }
 header h1 {
     text-align: center;
+    font-size: 35pt;
+    color:var(--sotetbarna)
 }
 article {
-    padding: 0 20px 20px 0;
+   padding:20px;
 }
 .jatekter {
     margin: auto;
 
     max-width: calc(3 * var(--szel));
-    border: 1px solid var(--vilagosbarna);
+    border: 8px solid var(--sotetbarna);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
@@ -39,7 +55,7 @@ article .elem {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* font-size: calc(var(--szel) * 2 / 3); */
+
     font-size: 3em;
     cursor: pointer;
     aspect-ratio: 1;
@@ -49,26 +65,23 @@ article .elem {
 section {
     background: rgb(23, 22, 22);
     color: beige;
-    padding: 20px;
+   
 }
 .lepes2,
 .lepes4,
 .lepes6 {
     padding: 10px;
+
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     gap: 20px;
 }
 .tabla {
-  
-    max-width: calc(var(--szel) * 3);
-    flex: 0 0 25%;
-    
+    flex: 0 0 calc(var(--szel) * 3 / 2);
 }
 .doboz {
     margin: auto;
-    max-width: calc(var(--szel) * 3);
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -80,21 +93,38 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(82, 69, 69);
+    color: var(--sotetbarna);
     color: black;
     font-size: 25px;
 
     aspect-ratio: 1;
 }
 /**infopanel*/
-.info p span {
-    color: rgb(174, 13, 13);
+.info{
+    background-color: white;
+    opacity: 0.5;
+    padding:10px;
+    margin:10px auto;
+    font-size: 16pt;
     font-weight: bold;
+    max-width: calc(3 * var(--szel));
+    border:8px solid var(--vilagosbarna)
+}
+.info p span {
+    color: var(--voros);
+   
+  
 }
 .info .kovjatekos span {
-    font-size: 30pt;
-    color: rgb(58, 6, 6);
-    font-weight: bold;
+   
+    color: var(--fekete);
+   
+}
+.info button{
+    background:var(--sotetbarna);
+    color:white;
+    padding:5pt 10pt;
+    font-size:12pt;
 }
 
 /**nyilak*/
@@ -102,12 +132,11 @@ section {
     position: relative;
 }
 .nyil {
-    
     width: calc(var(--szel) / 2);
     z-index: 10;
     position: absolute;
     font-weight: bold;
-    text-align:center;
+    text-align: center;
     transform-origin: 0% 50%;
 }
 .nyil span {

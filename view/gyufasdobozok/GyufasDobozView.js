@@ -11,6 +11,7 @@ class GyufasDobozView {
         this.#adat = adat;
         this.#lepesekLista = adat.lepesek;
         this.#init();
+      
     }
 
     #init() {
@@ -23,26 +24,26 @@ class GyufasDobozView {
         this.nyilElem = this.szuloElem
             .children(".tabla:last-child")
             .children(".nyilak");
-        // this.nyilakElem = this.szuloElem.children(".nyilak:last-child");
+       
         this.#allapotLista.forEach((element, index) => {
             new GyufasDobozElemView(element, index, this.dobozElem);
         });
         this.#lepesekInit();
     }
     #lepesekInit() {
+
         this.elem = this.dobozElem.children(".elem:first-child");
 
         let szelessegPX = this.dobozElem.css("width");
 
-        let szelesseg = szelessegPX.slice(0, szelessegPX.length - 2) / 3;
-console.log("Új elem")
+        let szelesseg = szelessegPX.slice(0, szelessegPX.length - 2) /3;
+        console.log("Új elem");
         this.#lepesekLista.forEach((element, index) => {
             let sor = Math.floor(element[0] / 3);
             let oszlop = element[0] % 3;
-            let top = szelesseg * sor ;
-
+            let top = szelesseg * sor;
             let left = szelesseg * oszlop + szelesseg / 2 + 5;
-            let kulonbseg = element[1] - element[0] -3;
+            let kulonbseg = element[1] - element[0] - 3;
             console.log(element[0], element[1], kulonbseg);
             let fok =
                 Math.abs(element[1] - element[0]) == 3
@@ -55,6 +56,7 @@ console.log("Új elem")
             );
         });
     }
+    
 }
 export default GyufasDobozView;
 class GyufasDobozElemView extends Elem {
