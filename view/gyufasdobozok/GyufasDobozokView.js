@@ -6,11 +6,15 @@ class GyufasDobozokView {
         this.#init();
     }
     #init() {
-        this.#lista.forEach((element,index) => {
-           
-            new GyufasDobozView(element,index);
+        let szuloElem = $(`.gyufasdobozok .lepes2`);
+        szuloElem.empty();
+        szuloElem = $(`.gyufasdobozok .lepes4`);
+        szuloElem.empty();
+        szuloElem = $(`.gyufasdobozok .lepes6`);
+        szuloElem.empty();
+        this.#lista.forEach((element, index) => {
+            new GyufasDobozView(element, index);
         });
     }
 }
 export default GyufasDobozokView;
-
