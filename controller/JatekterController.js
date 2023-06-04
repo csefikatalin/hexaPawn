@@ -34,16 +34,11 @@ class JatekterController {
             this.blocked = false;
             if (this.#kiKovetkezik == 1) {
                 //A gép lépései
-
-                //$("*").off();
                 setTimeout(() => {
                     //Itt lép a gép, és adott idő múlva jön a játékos
                     this.#gepLepes();
-                    console.log("Te jössz!");
-
                     this.#kovetkezoLepesElokeszites();
                     this.#jatekvege();
-                    // $("*").on();
                 }, 1000);
             }
             this.#infoView.setKovJatekosElem(
@@ -58,7 +53,7 @@ class JatekterController {
     #gepLepes() {
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
         this.#jatekterModel.gepLepes();
-        console.log("A gép lépett");
+       // console.log("A gép lépett");
     }
     #kovetkezoLepesElokeszites() {
         this.#jatekterView.aktAllapotMegjelenit(
