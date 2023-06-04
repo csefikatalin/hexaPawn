@@ -9,6 +9,7 @@ class GyufasDobozView {
         this.#allapotLista = adat.jatekter;
       this.index=index
         this.szuloElem = $(`.gyufasdobozok .lepes${adat.lepesszam}`);
+       
         this.#adat = adat;
         this.#lepesekLista = adat.lepesek;
         this.#init();
