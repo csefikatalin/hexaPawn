@@ -1,7 +1,7 @@
 import { gyufasDobozLista } from "./gyufasdobozlista.js";
 class GyufasDobozModell {
     #lepesLista = [];
-    #gyufasdDobozLista = [];
+    #gyufasdDobozLista = [];//itt tárolomm a gyufásdobozokat, amik az adott állapothoz tartozó lehetséges lépéseket tárolják
     constructor() {
         this.#gyufasdDobozLista = gyufasDobozLista;
       
@@ -35,14 +35,26 @@ class GyufasDobozModell {
         return lepesek[lepesIndex];
     }
     veresegKezelese() {
-        let utolsolepes = this.#lepesLista.pop();
+        console.log("Vereségkezelés")
+       
+        let utolsoDobozIndex=this.#egylepesKivesz()
+        while (this.#gyufasdDobozLista[utolsoDobozIndex].lepesek.length===0){
+            this.#egylepesKivesz()
+        }
+        localStorage.setItem("okosDobozok",JSON.stringify(this.#gyufasdDobozLista))
+    }
+    #egylepesKivesz(){
+        let utolsolepes = this.#lepesLista.pop();        
         console.log(utolsolepes);
         let utolsoDobozIndex = utolsolepes.dobozSzam;
-        let utolsoLepesIndex = utolsolepes.lepes;
-        
-        console.log(this.#gyufasdDobozLista[utolsoDobozIndex].lepesek);
+        let utolsoLepesIndex = utolsolepes.lepesSzam;
+        console.log("dobozSzám",utolsoDobozIndex)
+        console.log("lepesSzám",utolsoLepesIndex)      
+        console.log("lepes",utolsolepes.lepes)      
+        console.log("lépések",this.#gyufasdDobozLista[utolsoDobozIndex].lepesek);
         this.#gyufasdDobozLista[utolsoDobozIndex].lepesek.splice(utolsoLepesIndex, 1);
         console.log(this.#gyufasdDobozLista[utolsoDobozIndex].lepesek);
+        return utolsoDobozIndex
     }
 }
 export default GyufasDobozModell;

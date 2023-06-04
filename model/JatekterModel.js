@@ -24,38 +24,38 @@ class JatekterModel {
     }
     babuValasztas(index) {
         //amikor kiválasztom a bábut, amivel lépni fogok
-
         this.#kivalasztottBabu = this.#lista[index];
         this.#kivalasztottBabuIndex = index;
         this.#szabadhelyrelep(this.#kivalasztottBabuIndex);
     }
-    kivalasztottLepes(index) {
-        //a játékos az index . mezőt válaszotta
-        this.#lista[index] = this.#kivalasztottBabu;
-        this.#lista[this.#kivalasztottBabuIndex] = " ";
-        this.#kiKovetkezik = this.#kiKovetkezik * -1;
-        this.gyoztesBabu = this.gyoztes();
 
-        if (this.gyoztesBabu !== undefined) {
-            this.jatekVege = true;
-        }
-    }
     get lista() {
         return this.#lista;
     }
     get valaszthatoMezokLista() {
         return this.#valaszthatoMezokLista;
     }
+    kivalasztottLepes(index) {
+        //a JÁTÉKOS lép:  az index . mezőt válaszotta
+        this.#lista[index] = this.#kivalasztottBabu;
+        this.#lista[this.#kivalasztottBabuIndex] = " ";
+        this.#kiKovetkezik = this.#kiKovetkezik * -1;
+        this.#gyoztesKezeles();
+    }
     gepLepes() {
-        //this.#lista[index] = this.#kivalasztottBabu;
-        // this.#lista[this.#kivalasztottBabuIndex] = " ";
+        //a GÉP lép
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
         let lepes = this.#gyufasDobozModell.allapotKeres(this.#lista);
-
         this.#lista[lepes[1]] = this.#lista[lepes[0]];
         this.#lista[lepes[0]] = " ";
-        this.gyoztesBabu = this.gyoztes();
-
+        this.#gyoztesKezeles();
+    }
+    #gyoztesKezeles() {
+        this.gyoztesBabu = this.#gyoztes();
+        console.log("győztesbábu",this.gyoztesBabu)
+        if (this.gyoztesBabu == "♙") {
+           this.#gyufasDobozModell.veresegKezelese()
+        }
         if (this.gyoztesBabu !== undefined) {
             this.jatekVege = true;
         }
@@ -77,13 +77,13 @@ class JatekterModel {
         this.#valaszthatoSzeleMezo(index, 0, "♙", "♟", -1); //balra
     }
 
-    gyoztes() {
+    #gyoztes() {
         let feherGyoztes = this.#lista.join(".").slice(0, 5);
         if (feherGyoztes.includes("♙")) {
             return "♙";
         }
         let feketeGyoztes = this.#lista.join(".").slice(12, 17);
-        console.log(feherGyoztes, feketeGyoztes);
+        //console.log(feherGyoztes, feketeGyoztes);
         if (feketeGyoztes.includes("♟")) {
             return "♟";
         }
