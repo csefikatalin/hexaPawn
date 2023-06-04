@@ -4,4 +4,4 @@ A játékos a gép ellen játszik, a gép minden veresége után "tanul". Elveti
 Az itt bemutatott stratégiával tanul a gép. [a link](https://google.com).
 
 
-![A játék képe](https://https://github.com/csefikatalin/hexaPawn/kepek/hexapawn.PNG "Hexapawn játék - öntanuló automata")
+![A játék képe](https://github.com/csefikatalin/hexaPawn/blob/master/kepek/hexapawn.PNG "Hexapawn játék - öntanuló automata")
