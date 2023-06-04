@@ -46,8 +46,10 @@ class JatekterModel {
         //a GÉP lép
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
         let lepes = this.#gyufasDobozModell.allapotKeres(this.#lista);
+       if (lepes==undefined){return}
         this.#lista[lepes[1]] = this.#lista[lepes[0]];
         this.#lista[lepes[0]] = " ";
+     
         this.#gyoztesKezeles();
     }
     #gyoztesKezeles() {
