@@ -1,3 +1,4 @@
+import GyufasDobozModell from "./GyufasDobozModell.js";
 class JatekterModel {
     #valaszthatoMezokLista = [];
     #kiKovetkezik;
@@ -5,8 +6,8 @@ class JatekterModel {
     #kivalasztottBabuIndex;
     #lista = [];
     #babuLista;
-   
-   
+    #gyufasDobozModell;
+
     constructor() {
         this.#babuLista = ["♙", "♟", "♟", "♙"];
         this.#kiKovetkezik = -1; //-1 - fehér +1 fekete
@@ -14,8 +15,9 @@ class JatekterModel {
         this.#valaszthatoMezokLista = [];
         this.#kivalasztottBabu = "";
         this.#kivalasztottBabuIndex = 0;
-        this.jatekVege=false;
-        this.gyoztesBabu=""
+        this.jatekVege = false;
+        this.gyoztesBabu = "";
+        this.#gyufasDobozModell = new GyufasDobozModell();
     }
     #jatekter() {
         this.#lista = ["♟", "♟", "♟", " ", " ", " ", "♙", "♙", "♙"];
@@ -28,14 +30,14 @@ class JatekterModel {
         this.#szabadhelyrelep(this.#kivalasztottBabuIndex);
     }
     kivalasztottLepes(index) {
+        //a játékos az index . mezőt válaszotta
         this.#lista[index] = this.#kivalasztottBabu;
         this.#lista[this.#kivalasztottBabuIndex] = " ";
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
-        this.gyoztesBabu=this.gyoztes()
-    
-        if (this.gyoztesBabu!==undefined ){
-            this.jatekVege=true
-         
+        this.gyoztesBabu = this.gyoztes();
+
+        if (this.gyoztesBabu !== undefined) {
+            this.jatekVege = true;
         }
     }
     get lista() {
@@ -43,6 +45,20 @@ class JatekterModel {
     }
     get valaszthatoMezokLista() {
         return this.#valaszthatoMezokLista;
+    }
+    gepLepes() {
+        //this.#lista[index] = this.#kivalasztottBabu;
+        // this.#lista[this.#kivalasztottBabuIndex] = " ";
+        this.#kiKovetkezik = this.#kiKovetkezik * -1;
+        let lepes = this.#gyufasDobozModell.allapotKeres(this.#lista);
+
+        this.#lista[lepes[1]] = this.#lista[lepes[0]];
+        this.#lista[lepes[0]] = " ";
+        this.gyoztesBabu = this.gyoztes();
+
+        if (this.gyoztesBabu !== undefined) {
+            this.jatekVege = true;
+        }
     }
     // this.#kivalasztottBabuIndex
     #szabadhelyrelep(index) {
@@ -67,12 +83,12 @@ class JatekterModel {
             return "♙";
         }
         let feketeGyoztes = this.#lista.join(".").slice(12, 17);
-
+        console.log(feherGyoztes, feketeGyoztes);
         if (feketeGyoztes.includes("♟")) {
             return "♟";
         }
         let aktBabu = this.#babuLista[this.#kiKovetkezik + 1];
-      
+
         let db = 0;
         this.#lista.forEach((element, index) => {
             if (element == aktBabu) {
@@ -80,7 +96,7 @@ class JatekterModel {
                 db += this.#valaszthatoMezokLista.length;
             }
         });
-       
+
         if (db === 0) {
             console.log("nyert ", this.#babuLista[this.#kiKovetkezik + 2]);
             return this.#babuLista[this.#kiKovetkezik + 2];

@@ -6,9 +6,9 @@ class GyufasDobozokView {
         this.#init();
     }
     #init() {
-        this.#lista.forEach((element) => {
+        this.#lista.forEach((element,index) => {
            
-            new GyufasDobozView(element);
+            new GyufasDobozView(element,index);
         });
     }
 }

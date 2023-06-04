@@ -4,7 +4,7 @@ class JatekModell {
     #jatekSzama;
     constructor() {
         this.#jatekSzama = 1;
-        console.log(localStorage.getItem("gyozelmek"));
+      
         if (localStorage.getItem("gyozelmek") !== null) {
             const obj = JSON.parse(localStorage.getItem("gyozelmek"));
             this.#feherNyer = obj.feherNyer;
