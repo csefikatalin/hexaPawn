@@ -7,43 +7,59 @@
     --vilagoszold: rgb(83, 225, 83);
     --zold: rgb(49, 170, 49);
     --voros: rgb(159, 23, 23);
-    --feketeSzam:50%;
-    --feherSzam:50%;
-    --fekete:  #3c3229;
+    --feketeSzam: 50%;
+    --feherSzam: 50%;
+    --fekete: #3c3229;
     --feher: whitesmoke;
 }
-*{
+/*scrollbar*/
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+   
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--feher);
+    box-shadow: inset 0 0 5px var(--vilagosbarna); 
+  border-radius: 2px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:var(--barna);
+    border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+* {
     box-sizing: border-box;
 }
 body {
-    background: antiquewhite
-        url("https://cdn.create.vista.com/api/media/small/326318274/stock-photo-top-view-brown-wooden-surface");
-    background: antiquewhite
-        url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvqUxTTpPg1ElCICPEjhzShStDBzr81ev7ZMwyDksmMhbT3sirQGCwEYQ9BtO5e4QM6_0&usqp=CAU");
-    background: antiquewhite
-        url("https://img.freepik.com/free-photo/wooden-wood-backgrounds-textured-pattern-wallpaper-concept_53876-14103.jpg");
-    background: antiquewhite
-        url("https://st2.depositphotos.com/2547911/6822/i/450/depositphotos_68224243-stock-photo-texture-wooden-texture-wood-grain.jpg");
     background: antiquewhite url("kepek/hatter3.jpg");
 
     margin: 0;
-   
+    overflow: hidden;
     font-family: Montserrat, Tahoma, Geneva, Verdana, sans-serif;
 }
 main {
     width: 100%;
     text-align: center;
-  
+
     display: grid;
     grid-template-columns: calc(3 * var(--szel) + 100px) auto;
 }
 header h1 {
     text-align: center;
     font-size: 35pt;
-    color:var(--sotetbarna)
+    color: var(--sotetbarna);
 }
 article {
-   padding:20px;
+    padding: 20px;
 }
 .jatekter {
     margin: auto;
@@ -69,7 +85,13 @@ article .elem {
 section {
     background: rgb(23, 22, 22);
     color: beige;
-   
+}
+section h2 {
+    height: 5vh;
+}
+.gyufasdobozok {
+    overflow-y: auto;
+    height: 90vh;
 }
 .lepes2,
 .lepes4,
@@ -103,56 +125,54 @@ section {
 
     aspect-ratio: 1;
 }
-.doboz .delem:nth-child(odd){
-    background-color: var(--barna)
+.doboz .delem:nth-child(odd) {
+    background-color: var(--barna);
 }
-.doboz .delem:nth-child(even){
-    background-color: whitesmoke
+.doboz .delem:nth-child(even) {
+    background-color: whitesmoke;
 }
 /**infopanel*/
-.info{
+.info {
     background-color: white;
     opacity: 0.7;
-    padding:10px;
-    margin:10px auto;
+    padding: 10px;
+    margin: 10px auto;
     font-size: 16pt;
     font-weight: bold;
     max-width: calc(3 * var(--szel));
-    border:8px solid var(--vilagosbarna)
+    border: 8px solid var(--vilagosbarna);
 }
 .info p span {
     color: var(--voros);
-   
-  
 }
 .info .kovjatekos span {
-   
     color: var(--fekete);
-   
 }
-.info button{
-    background:var(--sotetbarna);
-    color:white;
-    padding:5pt 10pt;
-    font-size:12pt;
+.info button {
+    background: var(--sotetbarna);
+    color: white;
+    padding: 5pt 10pt;
+    font-size: 12pt;
 }
-.gyozelmekallasa{
-    display:grid;
+.gyozelmekallasa {
+    display: grid;
     grid-template-columns: var(--feketeSzam) var(--feherSzam);
-   
+
     grid-template-rows: 20pt;
-    
+    font-size: 10pt;
+    padding-top: 5pt;
 }
-.gyozelmekallasa span:first-of-type{
-    background-color:var(--fekete);
-    border-radius:5px 0 0 5px;
-    border:0.1px solid var(--barna)
+.gyozelmekallasa span:first-of-type {
+    background-color: var(--fekete);
+    border-radius: 5px 0 0 5px;
+    border: 0.1px solid var(--barna);
+    padding-top: 3pt;
 }
-.gyozelmekallasa span:last-of-type{
-    background-color:var(--feher);
-    border-radius: 0 5px 5px 0 ;
-    border:0.1px solid var(--barna)
-   
+.gyozelmekallasa span:last-of-type {
+    background-color: var(--feher);
+    border-radius: 0 5px 5px 0;
+    border: 0.1px solid var(--barna);
+    padding-top: 3pt;
 }
 
 /**nyilak*/
@@ -173,6 +193,13 @@ section {
 @media screen and (max-width: 900px) {
     main {
         grid-template-columns: auto;
+    }
+    body {
+        overflow: auto;
+    }
+    .gyufasdobozok{
+        overflow: auto;
+        height:auto;
     }
 }
 @media screen and (max-width: 700px) {

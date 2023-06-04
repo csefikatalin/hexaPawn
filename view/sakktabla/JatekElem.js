@@ -1,14 +1,24 @@
 import Elem from "../Elem.js";
 class JatekElem extends Elem {
     #lepheto;
-
+    #adat;
     constructor(adat, dataId, szuloElem) {
         super(adat, dataId, szuloElem);
+        this.#adat = adat;
         this.#lepheto = false;
         this.elem.on("click", () => {
+           //ha a gép ellen játszunk, akkor fekete bábura nem kattinthatunk. 
+          /*   if (this.#adat == "♟" && this.allapot) {
+                return;
+            } */
             if (!this.allapot) {
                 this.#trigger("lepes", this.dataId);
+                this.elem.css({
+                    "background-color": "var(--vilagoszold)",
+                    cursor: "grab",
+                });
             }
+
             if (this.#lepheto) {
                 this.#trigger("ideLepek", this.dataId);
             }
@@ -33,22 +43,20 @@ class JatekElem extends Elem {
     }
 
     #mouseEnter() {
-        //this.#trigger("lehetsegeslepesek", this.dataId);
+        if (this.#adat == "♟") {
+            return;
+        }
         if (!this.allapot) {
+            this.#trigger("lepes", this.dataId);
             this.elem.css({
                 "background-color": "var(--vilagoszold)",
                 cursor: "grab",
             });
         }
-        /*  if (this.#lepheto) {
-            this.elem.css({
-                "background-color": "rgb(115, 226, 81)",
-                cursor: "grab",
-            });
-        } */
+        //ha üres cellára lépek szedje le a formázásokat - csak az adott bábut nézi
     }
     #mouseLeave() {
-        this.szinBeallit();
+        // this.szinBeallit();
     }
     setLepheto(ertek) {
         //az adott bábu tud-e lépni erre a cellára.
