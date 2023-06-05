@@ -291,6 +291,14 @@ export const gyufasDobozLista = [
     },
     {
         lepesszam: 6,
+        jatekter: [" ", " ", "♟", "♙", "♟", "♟", " ", " ", " "],
+        lepesek: [
+            [4, 7],
+            [5, 8],
+        ],
+    },
+    {
+        lepesszam: 6,
         jatekter: [" ", " ", "♟", "♟", "♙", " ", " ", " ", " "],
         lepesek: [
             [2, 4],
@@ -339,28 +347,21 @@ export const gyufasDobozLista = [
             [5, 8],
         ],
     },
-    {
-        lepesszam: 6,
-        jatekter: [" ", " ", "♟", "♙", "♟", "♟", " ", " ", " "],
-        lepesek: [
-            [4, 7],
-            [5, 8],
-        ],
-    },
+
 ];
 
 export const okosDobozok = [
-    {
+   /* 1 */ {
         lepesszam: 2,
         jatekter: ["♟", "♟", "♟", "♙", " ", " ", " ", "♙", "♙"],
         lepesek: [[1, 3]],
     },
-    {
+   /* 2 */ {
         lepesszam: 2,
         jatekter: ["♟", "♟", "♟", " ", " ", "♙", "♙", "♙", " "],
         lepesek: [[1, 5]],
     },
-    {
+  /* 3 */  {
         lepesszam: 2,
         jatekter: ["♟", "♟", "♟", " ", "♙", " ", "♙", " ", "♙"],
         lepesek: [
@@ -368,7 +369,7 @@ export const okosDobozok = [
             [2, 4],
         ],
     },
-    {
+   /* 4 */ {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♟", "♙", " ", " ", " ", "♙"],
         lepesek: [
@@ -378,7 +379,7 @@ export const okosDobozok = [
             [3, 6],
         ],
     },
-    {
+   /* 5 */ {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", "♙", "♟", "♙", " ", " "],
         lepesek: [
@@ -388,7 +389,7 @@ export const okosDobozok = [
             [5, 8],
         ],
     },
-    {
+  /* 6 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", "♙", " ", " ", " ", "♙"],
         lepesek: [
@@ -398,7 +399,7 @@ export const okosDobozok = [
             [2, 5],
         ],
     },
-    {
+   /* 7 */ {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", "♙", " ", "♙", " ", " "],
         lepesek: [
@@ -408,7 +409,7 @@ export const okosDobozok = [
             [2, 5],
         ],
     },
-    {
+   /* 8 */ {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♙", "♟", " ", " ", " ", "♙"],
         lepesek: [
@@ -416,7 +417,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+  /* 9 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", "♟", "♙", " ", " ", "♙"],
         lepesek: [
@@ -425,7 +426,7 @@ export const okosDobozok = [
         ],
     },
    
-    {
+  /* 10 */  {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", "♙", "♟", " ", " ", " ", "♙"],
         lepesek: [
@@ -435,7 +436,7 @@ export const okosDobozok = [
             [4, 8],
         ],
     },
-    {
+   /* 11 */ {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", " ", "♟", "♙", "♙", " ", " "],
         lepesek: [
@@ -445,7 +446,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+   /* 12 */ {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♙", "♙", " ", " ", "♙", " "],
         lepesek: [
@@ -453,34 +454,32 @@ export const okosDobozok = [
             [2, 4],
         ],
     },
-    {
+  /* 13 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", "♙", "♙", " ", "♙", " "],
         lepesek: [
-            [0, 3],
+           
             [0, 4],
             [2, 4],
         ],
     },
-    {
+  /* 14 */  {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", "♙", " ", "♙", " ", " ", "♙"],
         lepesek: [
-            [1, 3],
-            [1, 4],
+           
             [1, 5],
         ],
     },
-    {
+  /* 15 */  {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", "♙", " ", "♙", "♙", " ", " "],
         lepesek: [
             [1, 3],
-            [1, 4],
-            [1, 5],
+          
         ],
     },
-    {
+   /* 16 */ {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", " ", "♟", "♙", "♙", " ", " "],
         lepesek: [
@@ -489,7 +488,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+  /* 17 */  {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", "♙", "♟", " ", " ", " ", "♙"],
         lepesek: [
@@ -498,7 +497,7 @@ export const okosDobozok = [
             [4, 8],
         ],
     },
-    {
+   /* 18 */ {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", "♟", "♙", "♙", "♙", " ", " "],
         lepesek: [
@@ -506,7 +505,7 @@ export const okosDobozok = [
             [2, 4],
         ],
     },
-    {
+  /* 19 */  {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", "♙", "♙", "♟", " ", " ", "♙"],
         lepesek: [
@@ -514,7 +513,7 @@ export const okosDobozok = [
             [1, 3],
         ],
     },
-    {
+  /* 20 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♟", " ", "♙", " ", "♙", " "],
         lepesek: [
@@ -522,7 +521,7 @@ export const okosDobozok = [
             [3, 7],
         ],
     },
-    {
+  /* 21 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♙", " ", "♟", " ", "♙", " "],
         lepesek: [
@@ -530,40 +529,40 @@ export const okosDobozok = [
             [5, 8],
         ],
     },
-    {
+  /* 22 */  {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", " ", "♙", " ", " ", " ", "♙"],
         lepesek: [[2, 5]],
     },
-    {
+   /* 23 */ {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", " ", "♙", " ", "♙", " ", " "],
         lepesek: [
             [0, 3],
-            [0, 4],
+          
         ],
     },
-    {
+  /* 24 */  {
         lepesszam: 4,
         jatekter: [" ", "♟", "♟", " ", "♙", " ", "♙", " ", " "],
         lepesek: [[2, 5]],
     },
-    {
+  /* 25 */  {
         lepesszam: 4,
         jatekter: ["♟", "♟", " ", " ", "♙", " ", " ", " ", "♙"],
         lepesek: [[0, 3]],
     },
-    {
+  /* 26 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", "♙", " ", " ", " ", " ", "♙"],
         lepesek: [[2, 5]],
     },
-    {
+  /* 27 */  {
         lepesszam: 4,
         jatekter: ["♟", " ", "♟", " ", " ", "♙", "♙", " ", " "],
         lepesek: [[0, 3]],
     },
-    {
+  /* 28 */  {
         lepesszam: 6,
         jatekter: [" ", " ", "♟", "♟", "♟", "♙", " ", " ", " "],
         lepesek: [
@@ -571,7 +570,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+   /* 29 */ {
         lepesszam: 6,
         jatekter: ["♟", " ", " ", "♙", "♟", "♟", " ", " ", " "],
         lepesek: [
@@ -579,27 +578,27 @@ export const okosDobozok = [
             [5, 8],
         ],
     },
-    {
+  /* 30 */  {
         lepesszam: 6,
         jatekter: ["♟", " ", " ", "♙", "♙", "♙", " ", " ", " "],
         lepesek: [[0, 4]],
     },
-    {
+  /* 31 */  {
         lepesszam: 6,
         jatekter: [" ", " ", "♟", "♙", "♙", "♙", " ", " ", " "],
         lepesek: [[2, 4]],
     },
-    {
+  /* 32 */  {
         lepesszam: 6,
         jatekter: [" ", "♟", " ", "♟", "♙", "♙", " ", " ", " "],
         lepesek: [[3, 6]],
     },
-    {
+  /* 33 */  {
         lepesszam: 6,
         jatekter: [" ", "♟", " ", "♙", "♙", "♟", " ", " ", " "],
         lepesek: [[5, 8]],
     },
-    {
+  /* 34 */  {
         lepesszam: 6,
         jatekter: ["♟", " ", " ", "♟", "♟", "♙", " ", " ", " "],
         lepesek: [
@@ -607,7 +606,15 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+     /* 35 */ {
+        lepesszam: 6,
+        jatekter: [" ", " ", "♟", "♙", "♟", "♟", " ", " ", " "],
+        lepesek: [
+            [4, 7],
+            [5, 8],
+        ],
+    },
+   /* 36 */ {
         lepesszam: 6,
         jatekter: [" ", " ", "♟", "♟", "♙", " ", " ", " ", " "],
         lepesek: [
@@ -616,7 +623,7 @@ export const okosDobozok = [
             [3, 6],
         ],
     },
-    {
+  /* 37 */  {
         lepesszam: 6,
         jatekter: ["♟", " ", " ", " ", "♙", "♟", " ", " ", " "],
         lepesek: [
@@ -625,7 +632,7 @@ export const okosDobozok = [
             [5, 8],
         ],
     },
-    {
+  /* 38 */  {
         lepesszam: 6,
         jatekter: [" ", "♟", " ", "♙", "♟", " ", " ", " ", " "],
         lepesek: [
@@ -633,7 +640,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+   /* 39 */ {
         lepesszam: 6,
         jatekter: [" ", "♟", " ", " ", "♟", "♙", " ", " ", " "],
         lepesek: [
@@ -641,7 +648,7 @@ export const okosDobozok = [
             [4, 7],
         ],
     },
-    {
+  /* 40 */  {
         lepesszam: 6,
         jatekter: ["♟", " ", " ", "♟", "♙", " ", " ", " ", " "],
         lepesek: [
@@ -649,7 +656,7 @@ export const okosDobozok = [
             [3, 6],
         ],
     },
-    {
+   /* 41 */ {
         lepesszam: 6,
         jatekter: [" ", " ", "♟", " ", "♙", "♟", " ", " ", " "],
         lepesek: [
@@ -657,12 +664,5 @@ export const okosDobozok = [
             [5, 8],
         ],
     },
-    {
-        lepesszam: 6,
-        jatekter: [" ", " ", "♟", "♙", "♟", "♟", " ", " ", " "],
-        lepesek: [
-            [4, 7],
-            [5, 8],
-        ],
-    },
+  
 ];
