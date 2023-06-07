@@ -32,15 +32,19 @@ class JatekterController {
             this.#kovetkezoLepesElokeszites();
 
             this.blocked = false;
-            if (this.#kiKovetkezik == 1) {
-                //A gép lépései
-                setTimeout(() => {
-                    //Itt lép a gép, és adott idő múlva jön a játékos
-                    this.#gepLepes();
-                    this.#kovetkezoLepesElokeszites();
-                    this.#jatekvege();
-                }, 1000);
-            }
+          /*   console.log($('input[name="ellenfel"]:checked').val());
+            if ($('input[name="ellenfel"]:checked').val() !== "Gép") {
+                console.log("gép lépsé") */
+                if (this.#kiKovetkezik == 1) {
+                    //A gép lépései
+                    setTimeout(() => {
+                        //Itt lép a gép, és adott idő múlva jön a játékos
+                        this.#gepLepes();
+                        this.#kovetkezoLepesElokeszites();
+                        this.#jatekvege();
+                    }, 1000);
+                }
+          /*   } */
             this.#infoView.setKovJatekosElem(
                 `A következő játékos: ${
                     this.#babuLista[this.#kiKovetkezik + 1]
@@ -53,7 +57,7 @@ class JatekterController {
     #gepLepes() {
         this.#kiKovetkezik = this.#kiKovetkezik * -1;
         this.#jatekterModel.gepLepes();
-       // console.log("A gép lépett");
+        // console.log("A gép lépett");
     }
     #kovetkezoLepesElokeszites() {
         this.#jatekterView.aktAllapotMegjelenit(

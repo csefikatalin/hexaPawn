@@ -4,11 +4,14 @@ class InfoJatekView {
     constructor(szuloElem,jatekszama) {
 
         szuloElem.html(
-            `<p class='sorszam'>Az aktuális játék száma: <span>${jatekszama}.</span></p>
+           
+            `
+            <p class='sorszam'>Az aktuális játék száma: <span>${jatekszama}.</span></p>
            <p style="font-size:6pt">Eddigi győzelmek</p>
             <div class="gyozelmekallasa">
             <span style="color:whitesmoke">SÖTÉT</span>
             <span>VILÁGOS</span></div>
+            <p></p>
             `
         );
         this.#sorszamElem = $(".sorszam span");

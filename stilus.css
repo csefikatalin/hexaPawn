@@ -40,6 +40,7 @@
     box-sizing: border-box;
 }
 body {
+    position:relative;
     background: antiquewhite url("kepek/hatter3.jpg");
 
     margin: 0;
@@ -155,6 +156,39 @@ footer p {
     background-color: whitesmoke;
 }
 /**infopanel*/
+.infopanel {
+    font-size:12pt;
+    color:beige;
+    position: absolute;
+    top: 150px;
+    left: 10%;
+    right: 10%;
+    background: var(--barna);
+    padding: 30px;
+    z-index: 30;
+   /*  opacity: 0.9; */
+    border-radius: 2px;
+    box-shadow: 6px 7px 26px 4px rgba(0, 0, 0, 0.55);
+    -webkit-box-shadow: 6px 7px 26px 4px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 6px 7px 26px 4px rgba(0, 0, 0, 0.55);
+  
+}
+.infopanel a{
+    color:orange;
+    text-decoration: none;
+}
+.infopanel a:hover{
+    color:rgb(255, 77, 0);
+    text-decoration: none;
+}
+
+.infopanel button {
+    background-color: beige;
+    position: absolute;
+    right:10px;
+    top:10px;
+}
+
 .info {
     background-color: white;
     opacity: 0.7;
@@ -174,8 +208,12 @@ footer p {
 .info button {
     background: var(--sotetbarna);
     color: white;
-    padding: 5pt 10pt;
-    font-size: 12pt;
+    padding: 3pt 10pt;
+    font-size: 8pt;
+}
+fieldset {
+    font-size:10pt;
+    text-align:left;
 }
 .gyozelmekallasa {
     display: grid;
