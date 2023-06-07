@@ -16,5 +16,6 @@ Az itt kipróbálható játékban fehér kezd (a játékos), majd a gép automat
 A gép minden páros lépésben következik, és a játék lehetséges állásait mutatják a játéktér mellett lévő "gyufásdobozok". Az első oszlopban nyomon követhetjük a gép tanulási folyamatát, míg a második oszlopban már a mindig nyerő "okos" gép stratégiáját tanulmányozhatjuk. 
 
 
+ [A játszható játék: ](https://csefikatalin.github.io/hexaPawn/)
 
 ![A játék képe](https://github.com/csefikatalin/hexaPawn/blob/master/kepek/hexapawn.PNG "Hexapawn játék - öntanuló automata")
